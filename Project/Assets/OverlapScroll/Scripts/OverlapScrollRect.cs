@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// ƒXƒNƒ[ƒ‹—Ìˆæ‚ªd‚È‚é‚Æ‚«ScrollRect§Œä
+/// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é ˜åŸŸãŒé‡ãªã‚‹ã¨ãScrollRectåˆ¶å¾¡
 /// </summary>
 public class OverlapScrollRect : ScrollRect
 {
     private enum ScrollType
     {
-        NotDrag,   // ƒhƒ‰ƒbƒO‚³‚ê‚Ä‚¢‚È‚¢
-        Self,      // ©g
-        Back       // — 
+        NotDrag,   // ãƒ‰ãƒ©ãƒƒã‚°ã•ã‚Œã¦ã„ãªã„
+        Self,      // è‡ªèº«
+        Back       // è£
     }
 
     private ScrollRect backScrollRect_ = null;
@@ -21,7 +21,7 @@ public class OverlapScrollRect : ScrollRect
     {
         base.OnDisable();
 
-        // — ‚ÌScrollRect‚ğ‹­§“I‚Éƒhƒ‰ƒbƒO‰ğœ‚·‚é
+        // è£ã®ScrollRectã‚’å¼·åˆ¶çš„ã«ãƒ‰ãƒ©ãƒƒã‚°è§£é™¤ã™ã‚‹
         if (scrollType_ == ScrollType.Back)
         {
             PointerEventData eventData = new PointerEventData(null);
@@ -32,7 +32,7 @@ public class OverlapScrollRect : ScrollRect
     }
 
     /// <summary>
-    /// — ‚É‚ ‚éScrollRect‚Ìİ’è
+    /// è£ã«ã‚ã‚‹ScrollRectã®è¨­å®š
     /// </summary>
     public void SetBackScrollRect(ScrollRect scrollRect)
     {
@@ -41,7 +41,7 @@ public class OverlapScrollRect : ScrollRect
 
     public override void OnDrag(PointerEventData eventData)
     {
-        // ƒXƒNƒ[ƒ‹‘ÎÛŠm”F
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«å¯¾è±¡ç¢ºèª
         ScrollType prevScrollType = scrollType_;
         if (backScrollRect_ == null) { scrollType_ = ScrollType.Self; }
         if (scrollType_ == ScrollType.NotDrag)
@@ -62,10 +62,10 @@ public class OverlapScrollRect : ScrollRect
             }
         }
 
-        // — ‚ğƒXƒNƒ[ƒ‹‚·‚éê‡‚ÉScrollRect‚Ì’l‚ğƒRƒs[
+        // è£ã‚’ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹å ´åˆã«ScrollRectã®å€¤ã‚’ã‚³ãƒ”ãƒ¼
         if (prevScrollType == ScrollType.NotDrag && scrollType_ == ScrollType.Back)
         {
-            // — ‚ÌScrollRect‚ğ‹­§“I‚Éƒhƒ‰ƒbƒOŠJn‚·‚é
+            // è£ã®ScrollRectã‚’å¼·åˆ¶çš„ã«ãƒ‰ãƒ©ãƒƒã‚°é–‹å§‹ã™ã‚‹
             backScrollRect_.OnBeginDrag(eventData);
         }
         else
@@ -79,7 +79,7 @@ public class OverlapScrollRect : ScrollRect
     {
         base.OnEndDrag(eventData);
 
-        // — ‚ÌScrollRect‚ğ‹­§“I‚Éƒhƒ‰ƒbƒO‰ğœ‚·‚é
+        // è£ã®ScrollRectã‚’å¼·åˆ¶çš„ã«ãƒ‰ãƒ©ãƒƒã‚°è§£é™¤ã™ã‚‹
         if (scrollType_ == ScrollType.Back) { backScrollRect_.OnEndDrag(eventData); }
 
         scrollType_ = ScrollType.NotDrag;

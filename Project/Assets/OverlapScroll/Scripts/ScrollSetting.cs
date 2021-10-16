@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ƒXƒNƒ[ƒ‹‰Šúİ’è
+/// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åˆæœŸè¨­å®š
 /// </summary>
 public class ScrollSetting : MonoBehaviour
 {
